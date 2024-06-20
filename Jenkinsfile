@@ -16,7 +16,7 @@ pipeline{
                 echo "text : ${COMMIT_MESSAGE}"
                 echo "booleanParam : ${PUSH_CHANGES}"
                 echo "choice : ${BUILD_TYPE}"
-                echo "password : ${GITHUB_TOKEN}"
+                echo "p1assword : ${GITHUB_TOKEN}"
 
                 }
         }
