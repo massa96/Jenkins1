@@ -2,19 +2,22 @@
 pipeline{
     agent any
 
-    environment{
-        PATH = "/usr/local/bin:$PATH"
+    parameters{
+        string(name: 'BRANCH', defaultValue: 'main', description: 'Branch to build')
+        text(name: 'COMMIT_MESSAGE',defaultValue: 'Automated build', description: 'Commit message')
+        booleanParam(name: 'PUSH_CHANGES',defaultValue: true,description: 'Push changes to remote repository')
+        choice(name: 'BUILD_TYPE',choices: ['Debug', 'Release'],description: 'Build type')
+        password(name: 'GITHUB_TOKEN',defaultValue: '',description: 'GitHub token for authentication')
     }
     stages {
         stage("Build"){
             steps{
-                echo "BRANCH_NAME : ${env.BRANCH_NAME}"
-                echo "BUILD_NUMBER : ${env.BUILD_NUMBER}"
-                echo "BUILD_ID : ${env.BUILD_ID}"
-                echo "JOB_NAME : ${env.JOB_NAME}"
-                echo "WORKSPACE : ${env.WORKSPACE}"
-                echo "BRANCH_IS_PRIMARY : ${env.BRANCH_IS_PRIMARY}"
-                 echo "PATH : ${env.PATH}"
+                echo "string : ${BRANCH}"
+                echo "text : ${COMMIT_MESSAGE}"
+                echo "booleanParam : ${PUSH_CHANGES}"
+                echo "choice : ${BUILD_TYPE}"
+                echo "password : ${GITHUB_TOKEN}"
+
                 }
         }
     }
