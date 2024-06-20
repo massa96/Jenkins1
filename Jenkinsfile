@@ -1,6 +1,9 @@
 
 pipeline{
     agent any
+    environnement{
+        PATH = "/usr/local/bin:$PATH"
+    }
     stages {
         stage("Build"){
             steps{
@@ -10,6 +13,7 @@ pipeline{
                 echo "JOB_NAME : ${env.JOB_NAME}"
                 echo "WORKSPACE : ${env.WORKSPACE}"
                 echo "BRANCH_IS_PRIMARY : ${env.BRANCH_IS_PRIMARY}"
+                 echo "PATH : ${env.PATH}"
                 }
         }
     }
