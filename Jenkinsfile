@@ -1,8 +1,11 @@
 
 pipeline{
     agent any
+
     stages {
-        parallel{
+
+      stage{
+          parallel{
             stage("Build"){
             steps{
                     echo "Build en cours"
@@ -14,6 +17,7 @@ pipeline{
                 }
         }
         }
+      }
         stage("production"){
             steps{
                     echo "Production en cours"
