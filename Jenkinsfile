@@ -4,12 +4,13 @@ pipeline{
 
     stages {
 
-      stage{
-          parallel{
-            stage("Build"){
-            steps{
+      stage("Build"){
+
+        parallel{
+                stage("Build"){
+                    steps{
                     echo "Build en cours"
-                }
+                    }
         }
         stage("deploy"){
             steps{
