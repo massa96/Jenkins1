@@ -10,7 +10,7 @@ pipeline{
         }
         stage('deployment en production'){
             when{
-                branch 'prod'
+                branch 'main'
             }
             steps{
                 echo "Hello World 2 je suis en deployment"
