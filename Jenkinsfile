@@ -4,11 +4,11 @@ pipeline{
     stages {
         stage("Build"){
             when {
-                branch  'main'
+                branch  'm_ain'
             }
             steps{
                
-                echo " branch ${env.BRANCH_NAME}"
+                echo "exactement"
                 }
         }
     }
