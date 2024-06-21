@@ -4,7 +4,7 @@ pipeline{
     stages {
         stage("Build"){
             when {
-                branch  'master'
+               not { branch 'master' }
             }
             steps{
                
