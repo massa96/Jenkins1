@@ -2,13 +2,21 @@
 pipeline{
     agent any
     stages {
-        stage("Build"){
-            when {
-               not { branch 'origin/main' }
-            }
+        pararel{
+            stage("Build"){
             steps{
-               
-                echo "exactement"
+                    echo "Build en cours"
+                }
+        }
+        stage("deploy"){
+            steps{
+                    echo "deployment  en cours"
+                }
+        }
+        }
+        stage("production"){
+            steps{
+                    echo "Production en cours"
                 }
         }
     }
