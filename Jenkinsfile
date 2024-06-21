@@ -2,7 +2,7 @@
 pipeline{
     agent any
     stages {
-        pararel{
+        parallel{
             stage("Build"){
             steps{
                     echo "Build en cours"
