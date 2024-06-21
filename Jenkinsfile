@@ -3,8 +3,8 @@ pipeline{
     agent any
     stages {
         stage("Build"){
-            when{
-                branch ='main'
+            when {
+                branch  'main'
             }
             steps{
                
