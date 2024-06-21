@@ -4,7 +4,8 @@ pipeline{
 
     stages {
         matrix{
-            axes {
+            stage("Build"){
+                axes {
                     axis 
                     {
                         name 'PLATFORM' 
@@ -15,6 +16,7 @@ pipeline{
                         values 'x86', 'x64','x32'
                         }
                 }
+            }
             }
         
 
