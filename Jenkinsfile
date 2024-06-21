@@ -4,7 +4,8 @@ pipeline{
 
     stages {
 
-      stage("Build"){
+      stage("Build")
+      {
         matrix{
             axes {
                     axis 
@@ -17,11 +18,16 @@ pipeline{
                         values 'x86', 'x64','x32'
                         }
                 }
-        stage("Build and Test"){
+            }
+        }
+
+        stage("Build and Test")
+        {
                 steps{
                     echo "Building and testing on ${PLATFORM} ${ARCH}"
                 }
         }
+
         stage("Production") 
         {
             steps {
@@ -31,8 +37,7 @@ pipeline{
         }
         }
 
-      }
+      
     }
 
     
-}
