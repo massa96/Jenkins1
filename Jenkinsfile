@@ -1,23 +1,24 @@
 
 pipeline{
-    agent any
-
+    agent none
     stages {
-        matrix{
-            stage("Build"){
+        stage("Build and Test"){
+            matrix{
+            agent any
                 axes {
                     axis 
                     {
                         name 'PLATFORM' 
                         values 'Windows', 'Linux', 'Mac'
                     }
-                    axis{
-                         name 'ARCH'
+                    axis
+                    {
+                        name 'ARCH'
                         values 'x86', 'x64','x32'
-                        }
-                }
+                    }
             }
             }
+        }
         
 
         stage("Build and Test")
