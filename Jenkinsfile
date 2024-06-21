@@ -4,7 +4,7 @@ pipeline{
     stages {
         stage("Build"){
             when {
-                branch  'm_ain'
+                branch  'main'
             }
             steps{
                
