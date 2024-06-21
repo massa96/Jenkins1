@@ -1,43 +1,37 @@
 
-pipeline{
+
+pipeline {
     agent none
     stages {
-        stage("Build and Test"){
-            matrix{
-            agent any
+        stage('BuildAndTest') {
+            matrix {
+                agent any
                 axes {
-                    axis 
-                    {
-                        name 'PLATFORM' 
-                        values 'Windows', 'Linux', 'Mac'
+                    axis {
+                        name 'PLATFORM'
+                        values 'linux', 'windows', 'mac'
                     }
-                    axis
-                    {
-                        name 'ARCH'
-                        values 'x86', 'x64','x32'
+                    axis {
+                        name 'BROWSER'
+                        values 'firefox', 'chrome', 'safari', 'edge'
                     }
-            }
-            }
-        }
-        
-
-        stage("Build and Test")
-        {
-                steps{
-                    echo "Building and testing on ${PLATFORM} ${ARCH}"
                 }
-        }
-
-        stage("Production") 
-        {
-            steps {
-                echo "Deploying to production on ${PLATFORM} ${ARCH}"
-                // Add your deployment commands here
+                stages {
+                    stage('Build') {
+                        steps {
+                            echo "Do Build for ${PLATFORM} - ${BROWSER}"
+                        }
+                    }
+                    stage('Test') {
+                        steps {
+                            echo "Do Test for ${PLATFORM} - ${BROWSER}"
+                        }
+                    }
                 }
+            }
         }
-        }
-
-      
     }
+}
+
 
     
