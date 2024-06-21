@@ -5,24 +5,34 @@ pipeline{
     stages {
 
       stage("Build"){
-
-        parallel{
-                stage("Build"){
-                    steps{
-                    echo "Build en cours"
+        matrix{
+            axes {
+                    axis 
+                    {
+                        name 'PLATFORM' 
+                        values 'Windows', 'Linux', 'Mac'
                     }
+                    axis{
+                         name 'ARCH'
+                        values 'x86', 'x64','x32'
+                        }
+                }
+        stage("Build and Test"){
+                steps{
+                    echo "Building and testing on ${PLATFORM} ${ARCH}"
+                }
         }
-        stage("deploy"){
-            steps{
-                    echo "deployment  en cours"
+        stage("Production") 
+        {
+            steps {
+                echo "Deploying to production on ${PLATFORM} ${ARCH}"
+                // Add your deployment commands here
                 }
         }
         }
+
       }
-        stage("production"){
-            steps{
-                    echo "Production en cours"
-                }
-        }
     }
+
+    
 }
