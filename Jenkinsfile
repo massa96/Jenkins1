@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh echo 'hello > hello.txt'
+                sh 'echo hello > hello.txt'
                 archveArtifacts(artifacts : '.*txt')
             }
         }
